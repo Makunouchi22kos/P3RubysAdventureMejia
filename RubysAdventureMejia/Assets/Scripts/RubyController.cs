@@ -7,7 +7,7 @@ public class RubyController : MonoBehaviour
     public float speed = 3.0f;
 
     public int maxHealth = 5;
-    public float timeInvincincible = 2;
+    public float timeInvincible = 2;
     public int health { get { return currentHealth; } }
     int currentHealth;
 
@@ -35,7 +35,7 @@ public class RubyController : MonoBehaviour
 
         if (isInvincible)
         {
-            invincibleTimer = Time.deltaTime;
+            invincibleTimer -= Time.deltaTime;
             if(invincibleTimer < 0 )
             {
                 isInvincible = false;
@@ -59,9 +59,9 @@ public class RubyController : MonoBehaviour
                 return; 
             }
             isInvincible = true;
-            invincibleTimer = timeInvincincible;
+            invincibleTimer = timeInvincible;
         }
-        currentHealth = Mathf.Clamp(currentHealth + health, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 }
